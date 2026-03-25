@@ -2,25 +2,37 @@
 
 ## Problemas que inspiraram o início do projeto
 
-Minha família tem uma hidroponia, e muitos dos processos deles eram feitos pelo WhatsApp, que apeasar de funcional havia algumas complicações operacionais do dia a dia.
+O ponto de partida deste projeto foi uma operação real de hidroponia que utilizava o WhatsApp como principal ferramenta de gestão de pedidos. Apesar de funcional, havia complicações operacionais no dia a dia.
 
-- No momento da colheita eles tinha que somar todos os pedidos, o que havia muita margem para erro humano, ainda mais considerando a correria do dia a dia. Ocasionalmente resultando em maços colhidos a mais (disperdicio e prejuíso) ou a menos (problema nas entregas).
-- No momento de distribuir para a entrega, reforça novamento os problema descritos previamente, em que tinham que calcular a distribuição das rotas manualmente.
-- Falta de base de dados para análise: Apesar deles terem todo o hitórico de pedidos no WhatsApp, não havia como garantir a persistencia dos dados nem utilizá-los para análises.
+- No momento da colheita havia que somar todos os pedidos manualmente, o que gerava muita margem para erro humano, ainda mais considerando a correria do dia a dia. Ocasionalmente resultando em maços colhidos a mais (desperdício e prejuízo) ou a menos (problema nas entregas).
+- No momento de distribuir para a entrega, reforçava novamente os problemas descritos previamente, em que tinham que calcular a distribuição das rotas manualmente.
+- Falta de base de dados para análise: apesar de todo o histórico de pedidos estar no WhatsApp, não havia como garantir a persistência dos dados nem utilizá-los para análises.
 
-Principalmente diante desse problemas eu vim procurando alternativas para ajudar, muitas das tentativas falharam até que essa finalmente funcionou.
+Principalmente diante desses problemas, foram procuradas alternativas, muitas das tentativas falharam até que essa finalmente funcionou. Para entender melhor por que não foram contratados serviços terceirizados, veja: [Por que uma solução própria?](por-que-solucao-propria.md)
 
-## Princiapais funcionalidades do App
+## Principais funcionalidades do App
 
 (Primeiro vou descrever de forma funcional para depois descrever de forma técnica)
 
 - **Lançamento de pedidos de forma simples e rápida**: Uma resistência que as pessoas têm é de preencher formulários (já que 1 pedido pode ter vários produtos) então nessa aplicação o processo de lançamento de pedidos é simplificado. Ao invés de preencher vários formulários para um pedido, o usuário lança apenas um pedido (que internamente se decompõe pela modelagem de dados)
+
+<img src="imagens/pedidos.jpeg" width="300"/>
+
 - **Alterar e deletar pedidos**
 - **Resumo diário**
     - Quantidade total de produtos: Auxilia no momento da colheita
-    - Quantidade total de produtos por rota: Auxilia no monto de distribuir para a entrega
+
+    <img src="imagens/calculo-de-pedidos-do-dia.jpeg" width="225"/>
+
+    - Quantidade total de produtos por rota: Auxilia no momento de distribuir para a entrega
+
+    <img src="imagens/calculo-de-rotas-do-dia.jpeg" width="225"/>
+
 - **Histórico de vendas persistente**: Os pedidos são armazenados em Banco de dados
-- **Dashboard**: Com base no banco de dados podemos criar análises como melhor e priores produtos ou clientes, identificar sazonalidade, utiliza como fonte de dados para machine learning entre outras outras análises.
+- **Dashboard**: Com base no banco de dados podemos criar análises como melhores e piores produtos ou clientes, identificar sazonalidade, utilizar como fonte de dados para machine learning entre outras análises.
+
+<img src="imagens/dashboard-1.jpeg" width="300"/>
+<img src="imagens/dashboard-2.jpeg" width="300"/>
 
 ## Funcionalidades adicionais
 
@@ -41,7 +53,7 @@ Principalmente diante desse problemas eu vim procurando alternativas para ajudar
 
 ## Banco de dados
 
-- Banco de dados SQL postigres, hospedado localmente no servidor
+- Banco de dados SQL PostgreSQL, hospedado localmente no servidor
 - Não entrarei em muitos detalhes sobre o schema para não comprometer a segurança, porém há uma boa modelagem de dados relacional para otimização e consistência da operação.
 
 ## CI/CD
@@ -72,5 +84,5 @@ O app é acessado principalmente pelo celular, então o desempenho de carregamen
 
 # Projeções
 
-- **Automações a nível de hardware**: Projetos com sensores (Temperatura, humidade, chuva…) e microcontroladores (esp ou arduíno) para coletar dados, interagir com regadores, bombas,
+- **Automações a nível de hardware**: Projetos com sensores (Temperatura, umidade, chuva…) e microcontroladores (ESP ou Arduino) para coletar dados, interagir com regadores, bombas,
 - **Emissão de notas automática**
